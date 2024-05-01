@@ -248,14 +248,18 @@ const tituloMain = document.getElementById("titulo-main");  //Obtiene nombre del
 let enlacesMarcas = document.getElementsByClassName("enlace");  //Obtiene los elementos HTML de los enlaces de consulta (NavTab)
 let botonDetalles = document.getElementsByClassName("boton-ver-detalles");//Obtiene los elementos boton detalle(Pendiente por realizar)
 let contenedorDetallesAutos = document.getElementById("modal");//Obtiene el contenedor de informacion de detalles
-let botonCerrar = document.querySelector('.cerrar')
+let botonCerrar = document.querySelector('.cerrar');
+let contenedorSimulaCredito = document.getElementById("supercontenedor");
+let botonCalcularCredito = document.querySelector('#boton-simula-credito-final');
 let autosFavoritos = [];
-let autosDetalles =[];
+let autosDetalles = [];
 
 //********************** Seccion Principal que muestra card de autos segun criterio ************* */
 
+
 cargarAutos(arrayAutos);  //Al iniciar la pagina se cargan  TODOS los autos sin ningun tipo de filtro
 
+// Inicio funcion cargarAutos
 //Funcion para cargar dinamicamente TODOS los autos al contenedor principal del HTML
 function cargarAutos(autos) {
   contenedorPrincipal.innerHTML = ""; //Resetea el contenedor para iniciar con un array vacio
@@ -286,7 +290,7 @@ function cargarAutos(autos) {
       agregarFavoritos(autosFavoritos);
     })
   }
-  
+
   //Asignar Evento boton mostrar detalles
   let botonDetalles = document.getElementsByClassName("boton-ver-detalles");
   for (const detalle of botonDetalles) {
@@ -296,7 +300,20 @@ function cargarAutos(autos) {
       mostrarDetalles(autosDetalles);
     })
   }
+  //NUEVO
+  //Asignar Evento boton mostrar SIMULA TU CREDITO
+  let botonSimula = document.getElementsByClassName("boton-simula-credito");
+  for (const simulacion of botonSimula) {
+    simulacion.addEventListener('click', (e) => {
+      e.preventDefault();
+      let autosSimulacion = autos.find(auto => auto.id == simulacion.id);
+      console.log(autosSimulacion);
+      simularCredito(autosSimulacion);
+    })
+  }
+
 }
+// Fin funcion cargarAutos
 
 
 
@@ -312,7 +329,6 @@ function agregarFavoritos(auto) {
   localStorage.setItem('numeroFavoritos', jsonNumeroFavorito);
 }
 
-
 //Asignacion de eventos a boton de favoritos GENERAL
 botonTodosFavoritos = document.querySelector(".logo-corazon");
 
@@ -322,6 +338,8 @@ botonTodosFavoritos.addEventListener("click", () => {
   tituloMain.innerHTML = "Esta es tu lista de Autos Favoritos!"
 });
 
+
+//Funcion Vaciar favoritos
 function vaciarFavoritos() {
   autosFavoritos = [];
   numeroFavorito.innerHTML = '';
@@ -346,9 +364,9 @@ for (const link of enlacesMarcas) {//Recorre los elementos del array de objetos 
   })
 }
 
-
 //************************************** Inicio Seccion Mostrar Modal Detalles********************* */
-//Seccion Mostrar detalles
+
+//Inicio Funcion mostrarDetalles
 function mostrarDetalles(autosDetalles) {
 
   contenedorDetallesAutos.innerHTML = ""; //Resetea el contenedor para iniciar con un array vacio
@@ -386,14 +404,17 @@ function mostrarDetalles(autosDetalles) {
       </div>
     `;
 
-    contenedorDetallesAutos.style.opacity = "1"
-    contenedorDetallesAutos.style.pointerEvents = "unset"
+  contenedorDetallesAutos.style.opacity = "1"
+  contenedorDetallesAutos.style.pointerEvents = "unset"
 
-    // Agregar de evento al botón de cierre
-    botonCerrar = document.querySelector('.cerrar')
-    botonCerrar.addEventListener('click', ocultarModal);
-    
+  // Agregar de evento al botón de cierre
+  botonCerrar = document.querySelector('.cerrar')
+  botonCerrar.addEventListener('click', ocultarModal);
+
 }
+//Fin Funcion mostrarDetalles
+
+
 
 // Función para ocultar la ventana modal
 function ocultarModal(e) {
@@ -402,107 +423,13 @@ function ocultarModal(e) {
   contenedorDetallesAutos.style.pointerEvents = "none";
 }
 
+
 //************************************** Fin Seccion Mostrar Modal Detalles********************* */
 
 
 
 
-
-//Funcion: simulacion de credito en cuotas
-function simularCredito(evento) {
-
-  evento.preventDefault()
-
-  //Declaracion de Variables
-let tasaNomAnual;
-let cantAgnos;
-let numeroTotalCuotas;
-let tasaIntEquiv;
-let costoAutoElegido;
-let montoFinanciar;
-let anticipo;
-
-// Entrada de datos
-costoAutoElegido = parseInt(document.querySelector("#valor-auto").value);
-anticipo = parseInt(document.getElementById("monto-anticipo").value);
-
-//Monto a financiar para la adquisicion del auto
-montoFinanciar = costoAutoElegido - anticipo;
-
-// Entrada de datos para calculo del financiamiento
-tasaNomAnual = parseFloat(document.getElementById("tasa-finac").value);
-
-cantAgnos = parseFloat(document.getElementById("cant-agnos").value);
-
-//Calculo de numero total de cuotas a financiar
-numeroTotalCuotas = 12 * cantAgnos;
-
-//Calculo de tasa de interes equivalente
-tasaIntEquiv = tasaNomAnual / 12;
-
-//Funcion para calcular Tasa Efectiva Anual
-function calcularTea(tasaNomAnual, numeroTotalCuotas) {
-  return ((Math.pow(1 + (tasaNomAnual / 100) / numeroTotalCuotas, numeroTotalCuotas) - 1) * 100);
-}
-
-tea = calcularTea(tasaNomAnual, numeroTotalCuotas);
-
-//Calculo de valor de la cuota de amortizacion
-let pmt = montoFinanciar * (tasaIntEquiv / 100) / (1 - Math.pow(1 + (tasaIntEquiv / 100), -numeroTotalCuotas));
-
-  // Ciclo para calcular los pagos de todas las cuotas
-  let saldoInicial = montoFinanciar;
-  let arrayAmortizacion = [] //array vacio a llenar por iteracion
-
-  for (let i = 0; i < numeroTotalCuotas; i++) {
-    let intereses = saldoInicial * tasaIntEquiv / 100;
-    let amortizacion = pmt - intereses;
-    let saldoFinal = saldoInicial - amortizacion;
-
-    arrayAmortizacion[i] = [[i], saldoInicial.toFixed(2), amortizacion.toFixed(2), intereses.toFixed(2), saldoFinal.toFixed(2)]
-
-    saldoInicial = saldoFinal;
-  }
-
-  for (let i = 0; i < numeroTotalCuotas; i++) {
-    let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
-    let divNuevoAnidado = document.createElement("div");
-    divNuevoAnidado.classList.add("tabla-amortizacion");
-    divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion")
-    let cuotasGeneradas = `<p>${i + 1}</p><p>${arrayAmortizacion[i][1]}</p><p>${arrayAmortizacion[i][2]}</p><p>${arrayAmortizacion[i][3]}</p><p>${arrayAmortizacion[i][4]}</p>`;
-    divNuevoAnidado.innerHTML = cuotasGeneradas
-
-    divTablaAmort.append(divNuevoAnidado);
-
-  }
-}
-
-//Funcion para limpiar campos de datos entrada
-function limpiarCampos () {
-  let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
-  document.querySelector("#valor-auto").value = "";
-  document.getElementById("monto-anticipo").value = "";
-  document.getElementById("tasa-finac").value= "";
-  document.getElementById("cant-agnos").value = "";
-  divTablaAmort.innerHTML = ""
-}
-
-
-let botonSimulaCredito = document.getElementById("boton-simula-credito");
-botonSimulaCredito.addEventListener ("click", simularCredito );
-
-let botonLimpiarCampos = document.getElementById("boton-limpiar-campos");
-botonLimpiarCampos.addEventListener("click", limpiarCampos );
-
-
-
-
-
-
-
-
-
-// // ******************************** Inicio Seccion Simulacion de credito**********************************
+// // ******************************** Inicio Seccion Simulacion de credito**************************
 // //Funcion: simulacion de credito en cuotas
 // function simularCredito(evento) {
 
@@ -563,12 +490,11 @@ botonLimpiarCampos.addEventListener("click", limpiarCampos );
 //     let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
 //     let divNuevoAnidado = document.createElement("div");
 //     divNuevoAnidado.classList.add("tabla-amortizacion");
-//     divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion");
+//     divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion")
 //     let cuotasGeneradas = `<p>${i + 1}</p><p>${arrayAmortizacion[i][1]}</p><p>${arrayAmortizacion[i][2]}</p><p>${arrayAmortizacion[i][3]}</p><p>${arrayAmortizacion[i][4]}</p>`;
 //     divNuevoAnidado.innerHTML = cuotasGeneradas
 
 //     divTablaAmort.append(divNuevoAnidado);
-
 //   }
 // }
 
@@ -582,6 +508,7 @@ botonLimpiarCampos.addEventListener("click", limpiarCampos );
 //   divTablaAmort.innerHTML = ""
 // }
 
+
 // let botonSimulaCredito = document.getElementById("boton-simula-credito");
 // botonSimulaCredito.addEventListener("click", simularCredito);
 
@@ -591,18 +518,152 @@ botonLimpiarCampos.addEventListener("click", limpiarCampos );
 // // ******************************** Fin Seccion Simulacion de credito**********************************
 
 
+//Prueba
+//Inicio Funcion simularcreditos
+function simularCredito(autosSimulacion) {
+
+  contenedorSimulaCredito.innerHTML = ""; //Resetea el contenedor para iniciar con un array vacio
+
+  contenedorSimulaCredito.innerHTML = ` 
+  <div class="contenedor-amortizacion">
+  <h1 class="titulo-amortizacion">Tabla de Amortizacion</h1>
+  <div class="">
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text" id="addon-wrapping">La tasa actual Aplicada para finaciamiento (TNA) es
+        de:</span>
+      <input type="text" class="form-control" id="tasa-finac" placeholder="Introducir tasa actual (TNA)"
+        aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text" id="addon-wrapping">En cuantos años deseas financiar tu vehiculo?</span>
+      <input type="text" class="form-control" id="cant-agnos" placeholder="Introducir cantidad de años a finaciar"
+        aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text" id="addon-wrapping">Indica el valor del auto a financiar:</span>
+      <input type="text" class="form-control" id="valor-auto" placeholder="Valor del Auto" aria-label="Username"
+        aria-describedby="addon-wrapping">
+    </div>
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text" id="addon-wrapping">Indica el valor del anticipo a entregar:</span>
+      <input type="text" class="form-control" id="monto-anticipo" placeholder="Monto del anticipo"
+        aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div class="botones-simula">
+      <button type="button" class="btn btn-success" id="boton-simula-credito-final">Simular Credito</button>
+      <button type="button" class="btn btn-danger" id="boton-limpiar-campos">Limpiar</button>
+      <button type="button" class="btn btn-danger" id="boton-cerrar-simula">Cerrar</button>
+    </div>
+  </div>
+  
+  <div  id="columnas-tabla-amortizacion">
+    <h2 class="columnas-tabla">Cuota</h2>
+    <h2 class="columnas-tabla">Saldo Inicial</h2>
+    <h2 class="columnas-tabla">Amortizacion de Capital</h2>
+    <h2 class="columnas-tabla">Interes</h2>
+    <h2 class="columnas-tabla">Saldo Final</h2>
+  </div>
+
+  <div class="tabla-amortizacion" id="cuerpo-tabla-amortizacion">
+    <!-- aqui va el contenido generado por javaScript -->
+  </div>
+  `;
+
+calcularCredito ();
+    
+  contenedorSimulaCredito.style.opacity = "1"
+  contenedorSimulaCredito.style.pointerEvents = "unset"
+
+  // Agregar de evento al botón de cierre
+  botonCerrarSimula = document.querySelector('#boton-cerrar-simula');
+  botonCerrarSimula.addEventListener('click', ocultarSimulaCredito);
 
 
 
+  // Agregar de evento al botón de calcularCredito
+  botonCalcularCredito = document.querySelector('#boton-simula-credito-final');
+  console.log(botonCalcularCredito);
+  botonCalcularCredito.addEventListener('click', calcularCredito);
+}
 
 
+//Funcion calcularCredito
+function calcularCredito (){
+      //Declaracion de Variables
+      let tasaNomAnual;
+      let cantAgnos;
+      let numeroTotalCuotas;
+      let tasaIntEquiv;
+      let costoAutoElegido;
+      let montoFinanciar;
+      let anticipo;
+    
+      // Entrada de datos
+      costoAutoElegido = parseInt(document.querySelector("#valor-auto").value);
+      anticipo = parseInt(document.getElementById("monto-anticipo").value);
+    
+      //Monto a financiar para la adquisicion del auto
+      montoFinanciar = costoAutoElegido - anticipo;
+    
+      // Entrada de datos para calculo del financiamiento
+      tasaNomAnual = parseFloat(document.getElementById("tasa-finac").value);
+    
+      cantAgnos = parseFloat(document.getElementById("cant-agnos").value);
+    
+      //Calculo de numero total de cuotas a financiar
+      numeroTotalCuotas = 12 * cantAgnos;
+    
+      //Calculo de tasa de interes equivalente
+      tasaIntEquiv = tasaNomAnual / 12;
+    
+      //Funcion para calcular Tasa Efectiva Anual
+      function calcularTea(tasaNomAnual, numeroTotalCuotas) {
+        return ((Math.pow(1 + (tasaNomAnual / 100) / numeroTotalCuotas, numeroTotalCuotas) - 1) * 100);
+      }
+    
+      tea = calcularTea(tasaNomAnual, numeroTotalCuotas);
+    
+      //Calculo de valor de la cuota de amortizacion
+      let pmt = montoFinanciar * (tasaIntEquiv / 100) / (1 - Math.pow(1 + (tasaIntEquiv / 100), -numeroTotalCuotas));
+    
+      // Ciclo para calcular los pagos de todas las cuotas
+      let saldoInicial = montoFinanciar;
+      let arrayAmortizacion = [] //array vacio a llenar por iteracion
+  
+  
+    
+      for (let i = 0; i < numeroTotalCuotas; i++) {
+        let intereses = saldoInicial * tasaIntEquiv / 100;
+        let amortizacion = pmt - intereses;
+        let saldoFinal = saldoInicial - amortizacion;
+    
+        arrayAmortizacion[i] = [[i], saldoInicial.toFixed(2), amortizacion.toFixed(2), intereses.toFixed(2), saldoFinal.toFixed(2)]
+    
+        saldoInicial = saldoFinal;
+      }
+  
+    for (let i = 0; i < numeroTotalCuotas; i++) {
+      let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
+      let divNuevoAnidado = document.createElement("div");
+      divNuevoAnidado.classList.add("tabla-amortizacion");
+      divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion")
+      let cuotasGeneradas = `<p>${i + 1}</p><p>${arrayAmortizacion[i][1]}</p><p>${arrayAmortizacion[i][2]}</p><p>${arrayAmortizacion[i][3]}</p><p>${arrayAmortizacion[i][4]}</p>`;
+      divNuevoAnidado.innerHTML = cuotasGeneradas
+  
+      divTablaAmort.append(divNuevoAnidado);
+    }
+    `
+  </div>
+      `;
+}
 
 
+// Función para ocultar la ventanaSimula Credito
+function ocultarSimulaCredito(e) {
+  e.preventDefault();
+  contenedorSimulaCredito.style.opacity = "0"
+  contenedorSimulaCredito.style.pointerEvents = "none";
+}
 
 
-
-
-
-
-
-
+//Fin Funcion mostrarDetalles
