@@ -109,6 +109,8 @@ header .logo-carrito i {
 
 /* BODY */
 
+
+
 main {
     background-color: #191919;
     padding-top: 30px;
@@ -289,7 +291,7 @@ section p {/* funciona bien*/
     right: 0;
     opacity: 0;
     pointer-events: none;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color:rgb(0, 0, 0, 0.75);
     display: flex;
 }
 
@@ -302,12 +304,23 @@ section p {/* funciona bien*/
     border-radius: 10px;
     padding: 5px 5px;
 
-
     display: grid;
     grid-template-columns: 2fr 3fr;
     grid-template-rows: 60px 60px 60px 60px 60px 60px;
     column-gap: 8px;
     row-gap: 2px;
+}
+
+.contenedor-amortizacion {
+    margin: auto;
+    width: 85%;
+    max-width: 800px;
+    max-height: 80%; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrollbar */
+    /* max-height: 100%; */
+    background-color: hsl(0, 0%, 0%);
+    border-radius: 10px;
+    padding: 5px 5px;
 }
 
 .modal-mostrar {
