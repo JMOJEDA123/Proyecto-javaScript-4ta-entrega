@@ -307,7 +307,6 @@ function cargarAutos(autos) {
     simulacion.addEventListener('click', (e) => {
       e.preventDefault();
       let autosSimulacion = autos.find(auto => auto.id == simulacion.id);
-      console.log(autosSimulacion);
       simularCredito(autosSimulacion);
     })
   }
@@ -423,12 +422,12 @@ function ocultarModal(e) {
   e.preventDefault();
   contenedorDetallesAutos.style.opacity = "0"
   contenedorDetallesAutos.style.pointerEvents = "none";
-  contenedorDetallesAutos.body.style.overflow = "auto"; // Re-enable scroll
 }
 
 
-
 //************************************** Fin Seccion Mostrar Modal Detalles********************* */
+
+
 
 
 
@@ -452,10 +451,9 @@ function simularCredito(autosSimulacion) {
       <input type="text" class="form-control" id="cant-agnos" placeholder="Introducir cantidad de años a finaciar"
         aria-label="Username" aria-describedby="addon-wrapping">
     </div>
-    <div class="input-group flex-nowrap">
-      <span class="input-group-text" id="addon-wrapping">Indica el valor del auto a financiar:</span>
-      <input type="text" class="form-control" id="valor-auto" placeholder="Valor del Auto" aria-label="Username"
-        aria-describedby="addon-wrapping">
+    <div class="input-group flex-nowrap auto-precio">
+      <p class="input-group-text" id="addon-wrapping">Valor del auto a financiar:</p>
+      <p class="form-control" id="valor-auto">${autosSimulacion.precio}</p>
     </div>
     <div class="input-group flex-nowrap">
       <span class="input-group-text" id="addon-wrapping">Indica el valor del anticipo a entregar:</span>
@@ -498,10 +496,8 @@ calcularCredito ();
 
   // Agregar de evento al botón de calcularCredito
   botonCalcularCredito = document.querySelector('#boton-simula-credito-final');
-  console.log(botonCalcularCredito);
   botonCalcularCredito.addEventListener('click', calcularCredito);
 }
-
 
 //Funcion calcularCredito
 function calcularCredito (){
@@ -515,7 +511,7 @@ function calcularCredito (){
       let anticipo;
     
       // Entrada de datos
-      costoAutoElegido = parseInt(document.querySelector("#valor-auto").value);
+      costoAutoElegido = parseInt(document.querySelector("#valor-auto").innerHTML);
       anticipo = parseInt(document.getElementById("monto-anticipo").value);
     
       //Monto a financiar para la adquisicion del auto
@@ -573,7 +569,6 @@ function calcularCredito (){
       `;
 }
 
-
 // Función para ocultar la ventanaSimula Credito
 function ocultarSimulaCredito(e) {
   e.preventDefault();
@@ -593,4 +588,4 @@ function limpiarCampos(e) {
   divTablaAmort.innerHTML = ""
 }
 
-//Fin Funcion mostrarDetalles
+//Fin Funcion simularcreditos

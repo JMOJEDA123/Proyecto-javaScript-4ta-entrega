@@ -263,6 +263,12 @@ section p {/* funciona bien*/
     margin: 1px
 }
 
+.auto-precio p {
+    color:rgba(11, 8, 143, 0.75);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
 
 
 /* *************************************** CUADRO DETALLES ******************************************* */
