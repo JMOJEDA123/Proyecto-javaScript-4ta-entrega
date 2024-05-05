@@ -6,7 +6,7 @@ const arrayAutos = [
     modelo: "Renegade",
     agno: "2024",
     condicion: "Nuevo",
-    precio: 26490000,
+    precio: 26000,
     color: "Blanco",
     puertas: "5",
     motor: "3.7 ",
@@ -21,7 +21,7 @@ const arrayAutos = [
     modelo: "Wrangler",
     agno: "2023",
     condicion: "Nuevo",
-    precio: 40700000,
+    precio: 32000,
     color: "Rojo",
     puertas: "5",
     motor: "3.7 ",
@@ -36,7 +36,7 @@ const arrayAutos = [
     modelo: "Compass",
     agno: "2021",
     condicion: "Usado",
-    precio: 32500000,
+    precio: 27000,
     color: "Blanco",
     puertas: "5",
     motor: "4.7 ",
@@ -51,7 +51,7 @@ const arrayAutos = [
     modelo: "Grand Cherokee",
     agno: "2018",
     condicion: "Usado",
-    precio: 28000000,
+    precio: 28000,
     color: "Negro",
     puertas: "5",
     motor: "4.7 ",
@@ -66,7 +66,7 @@ const arrayAutos = [
     modelo: "Chronos",
     agno: "2024",
     condicion: "Nuevo",
-    precio: 35600000,
+    precio: 31000,
     color: "Plata",
     puertas: "5",
     motor: "2.0 ",
@@ -81,7 +81,7 @@ const arrayAutos = [
     modelo: "Pulse",
     agno: "2023",
     condicion: "Nuevo",
-    precio: 31500000,
+    precio: 24000,
     color: "Rojo",
     puertas: "5",
     motor: "1.6 ",
@@ -96,7 +96,7 @@ const arrayAutos = [
     modelo: "Mobi",
     agno: "2020",
     condicion: "Usado",
-    precio: 22300000,
+    precio: 18000,
     color: "Negro",
     puertas: "5",
     motor: "1.3 ",
@@ -111,7 +111,7 @@ const arrayAutos = [
     modelo: "Argo",
     agno: "2020",
     condicion: "Usado",
-    precio: 32000000,
+    precio: 26000,
     color: "Azul",
     puertas: "5",
     motor: "1.6 ",
@@ -126,7 +126,7 @@ const arrayAutos = [
     modelo: "208",
     agno: "2024",
     condicion: "Nuevo",
-    precio: 29900000,
+    precio: 34000,
     color: "Verde",
     puertas: "5",
     motor: "2.0 ",
@@ -141,7 +141,7 @@ const arrayAutos = [
     modelo: "308",
     agno: "2023",
     condicion: "Nuevo",
-    precio: 45000000,
+    precio: 40000,
     color: "Rojo",
     puertas: "5",
     motor: "2.0 ",
@@ -156,7 +156,7 @@ const arrayAutos = [
     modelo: "206",
     agno: "2021",
     condicion: "Usado",
-    precio: 19700000,
+    precio: 10000,
     color: "Azul",
     puertas: "5",
     motor: "1.6 ",
@@ -171,7 +171,7 @@ const arrayAutos = [
     modelo: "207",
     agno: "2018",
     condicion: "Usado",
-    precio: 19700000,
+    precio: 15000,
     color: "Negro",
     puertas: "5",
     motor: "1.3 ",
@@ -186,7 +186,7 @@ const arrayAutos = [
     modelo: "Focus",
     agno: "2023",
     condicion: "Nuevo",
-    precio: 43000000,
+    precio: 49000,
     color: "Verde",
     puertas: "5",
     motor: "2.0 ",
@@ -201,7 +201,7 @@ const arrayAutos = [
     modelo: "Fiesta",
     agno: "2023",
     condicion: "Nuevo",
-    precio: 32000000,
+    precio: 33000,
     color: "Amarillo",
     puertas: "5",
     motor: "1.3 ",
@@ -216,7 +216,7 @@ const arrayAutos = [
     modelo: "KA",
     agno: "2017",
     condicion: "Usado",
-    precio: 15000,
+    precio: 12000,
     color: "Plata",
     puertas: "2",
     motor: "0.9 ",
@@ -231,7 +231,7 @@ const arrayAutos = [
     modelo: "Eco Sport",
     agno: "2018",
     condicion: "Usado",
-    precio: 33000000,
+    precio: 29000,
     color: "blanco",
     puertas: "5",
     motor: "2.6 ",
@@ -251,8 +251,10 @@ let contenedorDetallesAutos = document.getElementById("modal");//Obtiene el cont
 let botonCerrar = document.querySelector('.cerrar');
 let contenedorSimulaCredito = document.getElementById("supercontenedor");
 let botonCalcularCredito = document.querySelector('#boton-simula-credito-final');
+let botonCerrarMonedas = document.getElementById('cerrar-monedas');
 let autosFavoritos = [];
 let autosDetalles = [];
+let autosCambioMoneda = [];
 
 //********************** Seccion Principal que muestra card de autos segun criterio ************* */
 
@@ -272,7 +274,10 @@ function cargarAutos(autos) {
         <img src="${auto.urlFoto}" alt="${auto.modelo}" class="imagen-items">
         <p class="nom-items"><span class="titulo-items">${auto.marca}   ${auto.modelo}  ${auto.agno}</span></p>
         <p class="condicion-items"><span class="titulo-items"> ${auto.condicion}</span></p>
-        <p class="precio-items"><span class="precio-item">AR$ ${auto.precio}</span></p>
+        <div class= "money-converter">
+          <p class="precio-items"><span class="precio-item">AR$ ${auto.precio}</span></p>
+          <i class="fa-solid fa-money-bill-1-wave fa-2x icono-cambio-moneda" id="${auto.id}"></i>          
+        </div>        
         <button class="boton-ver-detalles button" id="${auto.id}"> Ver Detalles </button>
         <button class="boton-simula-credito button" id="${auto.id}"> Simula Tu credito </button>
         <i class="fa-solid fa-heart corazon-favorito" id="${auto.id}"></i>
@@ -300,7 +305,7 @@ function cargarAutos(autos) {
       mostrarDetalles(autosDetalles);
     })
   }
-  //NUEVO
+
   //Asignar Evento boton mostrar SIMULA TU CREDITO
   let botonSimula = document.getElementsByClassName("boton-simula-credito");
   for (const simulacion of botonSimula) {
@@ -308,6 +313,17 @@ function cargarAutos(autos) {
       e.preventDefault();
       let autosSimulacion = autos.find(auto => auto.id == simulacion.id);
       simularCredito(autosSimulacion);
+    })
+  }
+
+  // NUEVO
+  // Asignar Evento boton mostrar ChangeCurrency
+  let changeCurrency = document.getElementsByClassName("icono-cambio-moneda");
+  for (const botonChange of changeCurrency) {
+    botonChange.addEventListener('click', (e) => {
+      e.preventDefault();
+      let autosCambioMoneda = autos.find(auto => auto.id == botonChange.id);
+      cambiarMoneda(autosCambioMoneda);
     })
   }
 
@@ -368,6 +384,7 @@ for (const link of enlacesMarcas) {//Recorre los elementos del array de objetos 
 //Inicio Funcion mostrarDetalles
 function mostrarDetalles(autosDetalles) {
 
+
   contenedorDetallesAutos.innerHTML = ""; //Resetea el contenedor para iniciar con un array vacio
   contenedorDetallesAutos.innerHTML = ` 
 
@@ -406,7 +423,6 @@ function mostrarDetalles(autosDetalles) {
   contenedorDetallesAutos.style.opacity = "1";
   contenedorDetallesAutos.style.pointerEvents = "unset";
 
-  
 
   // Agregar de evento al botón de cierre
   botonCerrar = document.querySelector('.cerrar')
@@ -424,13 +440,11 @@ function ocultarModal(e) {
   contenedorDetallesAutos.style.pointerEvents = "none";
 }
 
-
 //************************************** Fin Seccion Mostrar Modal Detalles********************* */
 
 
 
-
-
+//************************************** Inicio Seccion Simular creditos********************* */
 //Inicio Funcion simularcreditos
 function simularCredito(autosSimulacion) {
 
@@ -480,8 +494,8 @@ function simularCredito(autosSimulacion) {
   </div>
   `;
 
-calcularCredito ();
-    
+  calcularCredito();
+
   contenedorSimulaCredito.style.opacity = "1"
   contenedorSimulaCredito.style.pointerEvents = "unset"
 
@@ -500,71 +514,71 @@ calcularCredito ();
 }
 
 //Funcion calcularCredito
-function calcularCredito (){
-      //Declaracion de Variables
-      let tasaNomAnual;
-      let cantAgnos;
-      let numeroTotalCuotas;
-      let tasaIntEquiv;
-      let costoAutoElegido;
-      let montoFinanciar;
-      let anticipo;
-    
-      // Entrada de datos
-      costoAutoElegido = parseInt(document.querySelector("#valor-auto").innerHTML);
-      anticipo = parseInt(document.getElementById("monto-anticipo").value);
-    
-      //Monto a financiar para la adquisicion del auto
-      montoFinanciar = costoAutoElegido - anticipo;
-    
-      // Entrada de datos para calculo del financiamiento
-      tasaNomAnual = parseFloat(document.getElementById("tasa-finac").value);
-    
-      cantAgnos = parseFloat(document.getElementById("cant-agnos").value);
-    
-      //Calculo de numero total de cuotas a financiar
-      numeroTotalCuotas = 12 * cantAgnos;
-    
-      //Calculo de tasa de interes equivalente
-      tasaIntEquiv = tasaNomAnual / 12;
-    
-      //Funcion para calcular Tasa Efectiva Anual
-      function calcularTea(tasaNomAnual, numeroTotalCuotas) {
-        return ((Math.pow(1 + (tasaNomAnual / 100) / numeroTotalCuotas, numeroTotalCuotas) - 1) * 100);
-      }
-    
-      tea = calcularTea(tasaNomAnual, numeroTotalCuotas);
-    
-      //Calculo de valor de la cuota de amortizacion
-      let pmt = montoFinanciar * (tasaIntEquiv / 100) / (1 - Math.pow(1 + (tasaIntEquiv / 100), -numeroTotalCuotas));
-    
-      // Ciclo para calcular los pagos de todas las cuotas
-      let saldoInicial = montoFinanciar;
-      let arrayAmortizacion = [] //array vacio a llenar por iteracion
-  
-  
-    
-      for (let i = 0; i < numeroTotalCuotas; i++) {
-        let intereses = saldoInicial * tasaIntEquiv / 100;
-        let amortizacion = pmt - intereses;
-        let saldoFinal = saldoInicial - amortizacion;
-    
-        arrayAmortizacion[i] = [[i], saldoInicial.toFixed(2), amortizacion.toFixed(2), intereses.toFixed(2), saldoFinal.toFixed(2)]
-    
-        saldoInicial = saldoFinal;
-      }
-  
-    for (let i = 0; i < numeroTotalCuotas; i++) {
-      let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
-      let divNuevoAnidado = document.createElement("div");
-      divNuevoAnidado.classList.add("tabla-amortizacion");
-      divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion")
-      let cuotasGeneradas = `<p>${i + 1}</p><p>${arrayAmortizacion[i][1]}</p><p>${arrayAmortizacion[i][2]}</p><p>${arrayAmortizacion[i][3]}</p><p>${arrayAmortizacion[i][4]}</p>`;
-      divNuevoAnidado.innerHTML = cuotasGeneradas
-  
-      divTablaAmort.append(divNuevoAnidado);
-    }
-    `
+function calcularCredito() {
+  //Declaracion de Variables
+  let tasaNomAnual;
+  let cantAgnos;
+  let numeroTotalCuotas;
+  let tasaIntEquiv;
+  let costoAutoElegido;
+  let montoFinanciar;
+  let anticipo;
+
+  // Entrada de datos
+  costoAutoElegido = parseInt(document.querySelector("#valor-auto").innerHTML);
+  anticipo = parseInt(document.getElementById("monto-anticipo").value);
+
+  //Monto a financiar para la adquisicion del auto
+  montoFinanciar = costoAutoElegido - anticipo;
+
+  // Entrada de datos para calculo del financiamiento
+  tasaNomAnual = parseFloat(document.getElementById("tasa-finac").value);
+
+  cantAgnos = parseFloat(document.getElementById("cant-agnos").value);
+
+  //Calculo de numero total de cuotas a financiar
+  numeroTotalCuotas = 12 * cantAgnos;
+
+  //Calculo de tasa de interes equivalente
+  tasaIntEquiv = tasaNomAnual / 12;
+
+  //Funcion para calcular Tasa Efectiva Anual
+  function calcularTea(tasaNomAnual, numeroTotalCuotas) {
+    return ((Math.pow(1 + (tasaNomAnual / 100) / numeroTotalCuotas, numeroTotalCuotas) - 1) * 100);
+  }
+
+  tea = calcularTea(tasaNomAnual, numeroTotalCuotas);
+
+  //Calculo de valor de la cuota de amortizacion
+  let pmt = montoFinanciar * (tasaIntEquiv / 100) / (1 - Math.pow(1 + (tasaIntEquiv / 100), -numeroTotalCuotas));
+
+  // Ciclo para calcular los pagos de todas las cuotas
+  let saldoInicial = montoFinanciar;
+  let arrayAmortizacion = [] //array vacio a llenar por iteracion
+
+
+
+  for (let i = 0; i < numeroTotalCuotas; i++) {
+    let intereses = saldoInicial * tasaIntEquiv / 100;
+    let amortizacion = pmt - intereses;
+    let saldoFinal = saldoInicial - amortizacion;
+
+    arrayAmortizacion[i] = [[i], saldoInicial.toFixed(2), amortizacion.toFixed(2), intereses.toFixed(2), saldoFinal.toFixed(2)]
+
+    saldoInicial = saldoFinal;
+  }
+
+  for (let i = 0; i < numeroTotalCuotas; i++) {
+    let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
+    let divNuevoAnidado = document.createElement("div");
+    divNuevoAnidado.classList.add("tabla-amortizacion");
+    divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion")
+    let cuotasGeneradas = `<p>${i + 1}</p><p>${arrayAmortizacion[i][1]}</p><p>${arrayAmortizacion[i][2]}</p><p>${arrayAmortizacion[i][3]}</p><p>${arrayAmortizacion[i][4]}</p>`;
+    divNuevoAnidado.innerHTML = cuotasGeneradas
+
+    divTablaAmort.append(divNuevoAnidado);
+  }
+  `
   </div>
       `;
 }
@@ -583,9 +597,137 @@ function limpiarCampos(e) {
   let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
   document.querySelector("#valor-auto").value = "";
   document.getElementById("monto-anticipo").value = "";
-  document.getElementById("tasa-finac").value= "";
+  document.getElementById("tasa-finac").value = "";
   document.getElementById("cant-agnos").value = "";
   divTablaAmort.innerHTML = ""
 }
 
-//Fin Funcion simularcreditos
+//************************************** Fin Seccion Simular Creditos********************* */
+
+
+
+
+
+
+//*******************************  API y Fetch **************************************************** */
+
+
+//Inicio Funcion cambiarMoneda
+async function cambiarMoneda(autosCambioMoneda) {
+
+  const currencyFreak = "https://api.currencyfreaks.com/v2.0/rates/latest?apikey=926f1d71a5ce4af89da962e3cfacf424";
+
+  const respuesta = await fetch(currencyFreak);
+  const data = await respuesta.json();
+
+  const precioconvertidoARS = autosCambioMoneda.precio*data.rates["ARS"];
+  const precioconvertidoCLP = autosCambioMoneda.precio*data.rates["CLP"];
+  const precioconvertidoUYU = autosCambioMoneda.precio*data.rates["UYU"];
+  const precioconvertidoBRL = autosCambioMoneda.precio*data.rates["BRL"];
+  const precioconvertidoVEF = autosCambioMoneda.precio*data.rates["VEF"];
+  let monedas = document.querySelector(".currency");
+
+  monedas.innerHTML = `
+  <div class ="currency-contenedor">
+    <div class="currency-tabla" id="currency-tabla">
+      <h1 class="titulo-currency">${autosCambioMoneda.marca}   ${autosCambioMoneda.modelo}  ${autosCambioMoneda.agno}</h1>
+      <table class="table">
+        <thead class="currency-head">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Pais</th>
+            <th scope="col">Moneda</th>
+            <th scope="col">Conversion</th>
+            <th scope="col">Valor en Moneda Local</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><img class="ars" src="../multimedia/ar.svg" alt="" ></th>
+            <td>Argentina</td>
+            <td>ARS</td>
+            <td>${data.rates["ARS"]}</td>
+            <td>${Math.round(precioconvertidoARS).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+          </tr>
+          <tr>
+            <th scope="row"><img class="ars" src="../multimedia/ch.svg" alt="" ></th>
+            <td>Chile</td>
+            <td>CLP</td>
+            <td>${data.rates["CLP"]}</td>
+            <td>${Math.round(precioconvertidoCLP).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+          </tr>
+          <tr>
+            <th scope="row"><img class="ars" src="../multimedia/uy.svg" alt="" ></th>
+            <td>Uruguay</td>
+            <td>UYI</td>
+            <td>${data.rates["UYU"]}</td>
+            <td>${Math.round(precioconvertidoUYU).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+          </tr>
+          <tr>
+            <th scope="row"><img class="ars" src="../multimedia/br.svg" alt="" ></th>
+            <td>Brasil</td>
+            <td>BRL</td>
+            <td>${data.rates["BRL"]}</td>
+            <td>${Math.round(precioconvertidoBRL).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+          </tr>
+          <tr>
+            <th scope="row"><img class="ars" src="../multimedia/ve.svg" alt="" ></th>
+            <td>Venezuela</td>
+            <td>VEF</td>
+            <td>${data.rates["VEF"]}</td>
+            <td>${Math.round(precioconvertidoVEF).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+
+    <div class="currency-imagen" id="currency-imagen">
+      <img src="${autosCambioMoneda.urlFoto}" alt="${autosDetalles.modelo}">
+      <p> ultima actualizacion: ${data.date} </p>
+      <i class="fa-regular fa-rectangle-xmark cerrar-monedas" id ="cerrar-monedas"></i>        
+    </div>
+
+  </div>
+
+    
+
+  `;
+
+  monedas = document.querySelector(".currency");
+  monedas.style.opacity = "1";
+  monedas.style.pointerEvents = "unset";
+
+
+  // Agregar de evento al botón de cierre
+  botonCerrarMonedas = document.getElementById("cerrar-monedas");
+  console.log(botonCerrarMonedas);
+  botonCerrarMonedas.addEventListener('click', ocultarMonedas);
+
+}
+
+// Función para ocultar la ventana modal
+function ocultarMonedas(e) {
+  e.preventDefault();
+  monedas = document.querySelector(".currency");
+  monedas.style.opacity = "0";
+  monedas.style.pointerEvents = "none";
+}
+
+//Fin Funcion currency
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
