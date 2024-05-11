@@ -13,7 +13,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "0",
-    urlFoto: "multimedia/img1-jeep-renegade-nuevo.jfif"
+    urlFoto: "multimedia/img1-jeep-renegade-nuevo.jfif",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "0",
-    urlFoto: "multimedia/img2-jeep-wrangler-nuevo.jfif"
+    urlFoto: "multimedia/img2-jeep-wrangler-nuevo.jfif",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const arrayAutos = [
     transmision: "Automatica",
     tipoCombustible: "Diesel",
     kilometros: "35750",
-    urlFoto: "multimedia/img3-jeep-compass-usado.jfif"
+    urlFoto: "multimedia/img3-jeep-compass-usado.jfif",
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const arrayAutos = [
     transmision: "Automatica",
     tipoCombustible: "Nafta",
     kilometros: "56600",
-    urlFoto: "multimedia/img4-jeep-grand-cherokee-usado.jfif"
+    urlFoto: "multimedia/img4-jeep-grand-cherokee-usado.jfif",
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ const arrayAutos = [
     transmision: "Automatico",
     tipoCombustible: "Diesel",
     kilometros: "0",
-    urlFoto: "multimedia/img5-fiat-chronos-nuevo.jfif"
+    urlFoto: "multimedia/img5-fiat-chronos-nuevo.jfif",
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "0",
-    urlFoto: "multimedia/img6-fiat-pulse-nuevo.jfif"
+    urlFoto: "multimedia/img6-fiat-pulse-nuevo.jfif",
   },
   {
     id: 7,
@@ -103,7 +103,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "65000",
-    urlFoto: "multimedia//img7-fiat-mobi-usado.jfif"
+    urlFoto: "multimedia//img7-fiat-mobi-usado.jfif",
   },
   {
     id: 8,
@@ -118,7 +118,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "80000",
-    urlFoto: "multimedia/img8-fiat-argo-usado.jfif"
+    urlFoto: "multimedia/img8-fiat-argo-usado.jfif",
   },
   {
     id: 9,
@@ -133,7 +133,7 @@ const arrayAutos = [
     transmision: "Automatica",
     tipoCombustible: "Diesel",
     kilometros: "0",
-    urlFoto: "multimedia/img9-peugeot-208-nuevo.jfif"
+    urlFoto: "multimedia/img9-peugeot-208-nuevo.jfif",
   },
   {
     id: 10,
@@ -148,7 +148,7 @@ const arrayAutos = [
     transmision: "Automatica",
     tipoCombustible: "Nafta",
     kilometros: "0",
-    urlFoto: "multimedia/img10-peugeot-308-nuevo.jfif"
+    urlFoto: "multimedia/img10-peugeot-308-nuevo.jfif",
   },
   {
     id: 11,
@@ -163,7 +163,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "23000",
-    urlFoto: "multimedia/img11-peugeot-206-usado.jfif"
+    urlFoto: "multimedia/img11-peugeot-206-usado.jfif",
   },
   {
     id: 12,
@@ -178,7 +178,7 @@ const arrayAutos = [
     transmision: "Automatica",
     tipoCombustible: "Nafta",
     kilometros: "72000",
-    urlFoto: "multimedia/img12-peugeot-207-usado.jfif"
+    urlFoto: "multimedia/img12-peugeot-207-usado.jfif",
   },
   {
     id: 13,
@@ -193,7 +193,7 @@ const arrayAutos = [
     transmision: "Automatica",
     tipoCombustible: "Nafta",
     kilometros: "0",
-    urlFoto: "multimedia/img13-ford-focus-nuevo.jfif"
+    urlFoto: "multimedia/img13-ford-focus-nuevo.jfif",
   },
   {
     id: 14,
@@ -208,7 +208,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "0",
-    urlFoto: "multimedia/img14-ford-fiesta-nuevo.jfif"
+    urlFoto: "multimedia/img14-ford-fiesta-nuevo.jfif",
   },
   {
     id: 15,
@@ -223,7 +223,7 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "115000",
-    urlFoto: "multimedia/img15-ford-ka-usado.jfif"
+    urlFoto: "multimedia/img15-ford-ka-usado.jfif",
   },
   {
     id: 16,
@@ -238,34 +238,35 @@ const arrayAutos = [
     transmision: "Manual",
     tipoCombustible: "Nafta",
     kilometros: "88000",
-    urlFoto: "multimedia/img16-ford-ecosport-usado.jfif"
-  }
-]
+    urlFoto: "multimedia/img16-ford-ecosport-usado.jfif",
+  },
+];
+
 
 //Elementos del DOM a Modificar
-const contenedorPrincipal = document.getElementById("contenedor");  //Obtiene el elemento contenedor elementos de autos. OK
-const tituloMain = document.getElementById("titulo-main");  //Obtiene nombre del titulo del MAIN. OK
-let enlacesMarcas = document.getElementsByClassName("enlace");  //Obtiene los elementos HTML de los enlaces de consulta (NavTab)
-let botonDetalles = document.getElementsByClassName("boton-ver-detalles");//Obtiene los elementos boton detalle(Pendiente por realizar)
-let contenedorDetallesAutos = document.getElementById("modal");//Obtiene el contenedor de informacion de detalles
-let botonCerrar = document.querySelector('.cerrar');
+const contenedorPrincipal = document.getElementById("contenedor"); //Obtiene el elemento contenedor elementos de autos. OK
+const tituloMain = document.getElementById("titulo-main"); //Obtiene nombre del titulo del MAIN. OK
+let enlacesMarcas = document.getElementsByClassName("enlace"); //Obtiene los elementos HTML de los enlaces de consulta (NavTab)
+let botonDetalles = document.getElementsByClassName("boton-ver-detalles"); //Obtiene los elementos boton detalle(Pendiente por realizar)
+let contenedorDetallesAutos = document.getElementById("modal"); //Obtiene el contenedor de informacion de detalles
+let botonCerrar = document.querySelector(".cerrar");
 let contenedorSimulaCredito = document.getElementById("supercontenedor");
-let botonCalcularCredito = document.querySelector('#boton-simula-credito-final');
-let botonCerrarMonedas = document.getElementById('cerrar-monedas');
-let autosFavoritos = [];
+let botonCalcularCredito = document.querySelector("#boton-simula-credito-final");
+let botonCerrarMonedas = document.getElementById("cerrar-monedas");
 let autosDetalles = [];
 let autosCambioMoneda = [];
 
+
 //********************** Seccion Principal que muestra card de autos segun criterio ************* */
 
-
-cargarAutos(arrayAutos);  //Al iniciar la pagina se cargan  TODOS los autos sin ningun tipo de filtro
+cargarAutos(arrayAutos); //Al iniciar la pagina se cargan  TODOS los autos sin ningun tipo de filtro
 
 // Inicio funcion cargarAutos
 //Funcion para cargar dinamicamente TODOS los autos al contenedor principal del HTML
 function cargarAutos(autos) {
   contenedorPrincipal.innerHTML = ""; //Resetea el contenedor para iniciar con un array vacio
-  for (const auto of autos) { //Recorre todos los elementos del array que se pasa como parametro
+  for (const auto of autos) {
+    //Recorre todos los elementos del array que se pasa como parametro
     divElemento = document.createElement("div"); // Crea el elemento de referencia donde se insertara dinamicamente informacion
     divElemento.classList.add("contenedor-elementos");
     divElemento.setAttribute("id", "contenedor-elementos");
@@ -276,7 +277,7 @@ function cargarAutos(autos) {
         <p class="condicion-items"><span class="titulo-items"> ${auto.condicion}</span></p>
         <div class= "money-converter">
           <p class="precio-items"><span class="precio-item">AR$ ${auto.precio}</span></p>
-          <i class="fa-solid fa-money-bill-1-wave fa-2x icono-cambio-moneda" id="${auto.id}"></i>          
+          <p class="icono-cambio-moneda" id="${auto.id}">💱</p>
         </div>        
         <button class="boton-ver-detalles button" id="${auto.id}"> Ver Detalles </button>
         <button class="boton-simula-credito button" id="${auto.id}"> Simula Tu credito </button>
@@ -286,105 +287,137 @@ function cargarAutos(autos) {
     contenedorPrincipal.append(divElemento); //Agrega cada elemento creado dentro del contenedor principal del DOM
   }
 
-  //Asignar Evento boton favorito de tarjetas
+  //Asignar EVENTO boton FAVORITO
   let corazonFavorito = document.getElementsByClassName("corazon-favorito");
 
-  for (const btnFavorito of corazonFavorito) {
-    btnFavorito.addEventListener('click', () => {
-      let autosFavoritos = autos.find(auto => auto.id == btnFavorito.id);
+  for (const btnFavorito of corazonFavorito) { //Esto Funciona bien
+    btnFavorito.addEventListener("click", () => {
+      let autosFavoritos = autos.find((auto) => auto.id == btnFavorito.id);
       agregarFavoritos(autosFavoritos);
-    })
+    });
   }
 
-  //Asignar Evento boton mostrar detalles
+  //Asignar EVENTO boton mostrar DETALLES
   let botonDetalles = document.getElementsByClassName("boton-ver-detalles");
   for (const detalle of botonDetalles) {
-    detalle.addEventListener('click', (e) => {
+    detalle.addEventListener("click", (e) => {
       e.preventDefault();
-      let autosDetalles = autos.find(auto => auto.id == detalle.id);
+      let autosDetalles = autos.find((auto) => auto.id == detalle.id);
       mostrarDetalles(autosDetalles);
-    })
+    });
   }
 
-  //Asignar Evento boton mostrar SIMULA TU CREDITO
+  //Asignar EVENTO boton mostrar SIMULA TU CREDITO
   let botonSimula = document.getElementsByClassName("boton-simula-credito");
   for (const simulacion of botonSimula) {
-    simulacion.addEventListener('click', (e) => {
+    simulacion.addEventListener("click", (e) => {
       e.preventDefault();
-      let autosSimulacion = autos.find(auto => auto.id == simulacion.id);
+      let autosSimulacion = autos.find((auto) => auto.id == simulacion.id);
       simularCredito(autosSimulacion);
-    })
+    });
   }
 
-  // NUEVO
-  // Asignar Evento boton mostrar ChangeCurrency
+  // Asignar EVENTO boton mostrar CHANGE CURRENCY
   let changeCurrency = document.getElementsByClassName("icono-cambio-moneda");
   for (const botonChange of changeCurrency) {
-    botonChange.addEventListener('click', (e) => {
+    botonChange.addEventListener("click", (e) => {
       e.preventDefault();
-      let autosCambioMoneda = autos.find(auto => auto.id == botonChange.id);
+      let autosCambioMoneda = autos.find((auto) => auto.id == botonChange.id);
       cambiarMoneda(autosCambioMoneda);
-    })
+    });
   }
-
 }
 // Fin funcion cargarAutos
 
 
+let autosEnWishList;
+let numeroFavorito;
+
+const autosEnWishListLS = JSON.parse(localStorage.getItem("favoritos"));
+cantFav = JSON.parse(localStorage.getItem("numeroFavoritos")) || "";
+numeroFavorito = document.getElementById("numero");
+numeroFavorito.innerHTML = `${cantFav}`;
+
+
+if(autosEnWishListLS){
+  autosEnWishList = autosEnWishListLS;  
+}else {
+  autosEnWishList = [];
+}
 
 //Funcion para agregar autos a favoritos
-function agregarFavoritos(auto) {
-  autosFavoritos.push(auto);
-  const jsonAutosFavoritos = JSON.stringify(autosFavoritos);
-  localStorage.setItem('favoritos', jsonAutosFavoritos);
-  cantFav = autosFavoritos.length;
-  let numeroFavorito = document.getElementById("numero");
+function agregarFavoritos(auto) { 
+  let idAuto = auto.id
+  if(autosEnWishList.some(auto => auto.id === idAuto)){ 
+    Swal.fire({
+      title: `Este Auto ya existe en tu Wish List!`,
+      icon: "error",
+    });
+
+  } else {
+  autosEnWishList.push(auto);
+  cantFav = autosEnWishList.length;
+  numeroFavorito = document.getElementById("numero");
   numeroFavorito.innerHTML = `${cantFav}`;
+
+
+  const jsonAutosFavoritos = JSON.stringify(autosEnWishList);
+  localStorage.setItem("favoritos", jsonAutosFavoritos);
+
   const jsonNumeroFavorito = JSON.stringify(numeroFavorito.innerHTML);
-  localStorage.setItem('numeroFavoritos', jsonNumeroFavorito);
+  localStorage.setItem("numeroFavoritos", jsonNumeroFavorito);
+  }
 }
 
 //Asignacion de eventos a boton de favoritos GENERAL
 botonTodosFavoritos = document.querySelector(".logo-corazon");
 
 botonTodosFavoritos.addEventListener("click", () => {
-  cargarAutos(autosFavoritos);
+  cargarAutos(autosEnWishList);
   let tituloMain = document.getElementById("titulo-main");
-  tituloMain.innerHTML = "Esta es tu lista de Autos Favoritos!"
+  tituloMain.innerHTML = "Esta es tu lista de Autos Favoritos!";
 });
 
+botonVaciarPapelera = document.getElementById("trashbin");
+botonVaciarPapelera.addEventListener("click", () => {
+  vaciarFavoritos();
+});
 
 //Funcion Vaciar favoritos
 function vaciarFavoritos() {
-  autosFavoritos = [];
-  numeroFavorito.innerHTML = '';
+localStorage.removeItem("favoritos");
+localStorage.removeItem("numeroFavoritos");
+numeroFavorito.innerHTML = "";
+autosEnWishList =[];
 }
 
 
-//Bucle: for...of  para asignar un Manejador de Eventos a cada enlace (link) de MARCA de autos y filtar por esa propiedad
-for (const link of enlacesMarcas) {//Recorre los elementos del array de objetos enlacesMarcas  para asignarle eventos a cada enlace (link)
+
+//Bucle: for...of  para asignar un Manejador de Eventos a cada enlace (link) de MARCA de autos y filtrar por esa propiedad
+for (const link of enlacesMarcas) {
+  //Recorre los elementos del array de objetos enlacesMarcas  para asignarle eventos a cada enlace (link)
 
   link.addEventListener("click", (e) => {
-    const selectPropiedadMarca = arrayAutos.find(auto => auto.marca === e.currentTarget.innerText);
+    const selectPropiedadMarca = arrayAutos.find(
+      (auto) => auto.marca === e.currentTarget.innerText
+    );
     if (e.currentTarget.getAttribute("id") != "autos-todos") {
       tituloMain.innerText = `Marca Mostrada:     ${selectPropiedadMarca.marca.toUpperCase()}`;
-      let autosPorMarca = arrayAutos.filter(auto => auto.marca === e.currentTarget.innerText);//Crea un array filtrado por marca
+      let autosPorMarca = arrayAutos.filter(
+        (auto) => auto.marca === e.currentTarget.innerText
+      ); //Crea un array filtrado por marca
       cargarAutos(autosPorMarca); //Carga la pagina solo con los auto filtrados por marca
-
     } else {
       tituloMain.innerText = `Filtro:  TODOS LOS AUTOS`;
       cargarAutos(arrayAutos);
-
     }
-  })
+  });
 }
 
 //************************************** Inicio Seccion Mostrar Modal Detalles********************* */
 
 //Inicio Funcion mostrarDetalles
 function mostrarDetalles(autosDetalles) {
-
-
   contenedorDetallesAutos.innerHTML = ""; //Resetea el contenedor para iniciar con un array vacio
   contenedorDetallesAutos.innerHTML = ` 
 
@@ -423,31 +456,24 @@ function mostrarDetalles(autosDetalles) {
   contenedorDetallesAutos.style.opacity = "1";
   contenedorDetallesAutos.style.pointerEvents = "unset";
 
-
   // Agregar de evento al botón de cierre
-  botonCerrar = document.querySelector('.cerrar')
-  botonCerrar.addEventListener('click', ocultarModal);
-
+  botonCerrar = document.querySelector(".cerrar");
+  botonCerrar.addEventListener("click", ocultarModal);
 }
 //Fin Funcion mostrarDetalles
-
-
 
 // Función para ocultar la ventana modal
 function ocultarModal(e) {
   e.preventDefault();
-  contenedorDetallesAutos.style.opacity = "0"
+  contenedorDetallesAutos.style.opacity = "0";
   contenedorDetallesAutos.style.pointerEvents = "none";
 }
 
 //************************************** Fin Seccion Mostrar Modal Detalles********************* */
 
-
-
 //************************************** Inicio Seccion Simular creditos********************* */
 //Inicio Funcion simularcreditos
 function simularCredito(autosSimulacion) {
-
   contenedorSimulaCredito.innerHTML = ""; //Resetea el contenedor para iniciar con un array vacio
 
   contenedorSimulaCredito.innerHTML = ` 
@@ -496,21 +522,20 @@ function simularCredito(autosSimulacion) {
 
   calcularCredito();
 
-  contenedorSimulaCredito.style.opacity = "1"
-  contenedorSimulaCredito.style.pointerEvents = "unset"
+  contenedorSimulaCredito.style.opacity = "1";
+  contenedorSimulaCredito.style.pointerEvents = "unset";
 
   // Agregar de evento al botón de cierre
-  botonCerrarSimula = document.querySelector('#boton-cerrar-simula');
-  botonCerrarSimula.addEventListener('click', ocultarSimulaCredito);
+  botonCerrarSimula = document.querySelector("#boton-cerrar-simula");
+  botonCerrarSimula.addEventListener("click", ocultarSimulaCredito);
 
   // Agregar de evento al botón Limpiar valores
-  botonLimpiar = document.querySelector('#boton-limpiar-campos');
-  botonLimpiar.addEventListener('click', limpiarCampos);
-
+  botonLimpiar = document.querySelector("#boton-limpiar-campos");
+  botonLimpiar.addEventListener("click", limpiarCampos);
 
   // Agregar de evento al botón de calcularCredito
-  botonCalcularCredito = document.querySelector('#boton-simula-credito-final');
-  botonCalcularCredito.addEventListener('click', calcularCredito);
+  botonCalcularCredito = document.querySelector("#boton-simula-credito-final");
+  botonCalcularCredito.addEventListener("click", calcularCredito);
 }
 
 //Funcion calcularCredito
@@ -544,37 +569,49 @@ function calcularCredito() {
 
   //Funcion para calcular Tasa Efectiva Anual
   function calcularTea(tasaNomAnual, numeroTotalCuotas) {
-    return ((Math.pow(1 + (tasaNomAnual / 100) / numeroTotalCuotas, numeroTotalCuotas) - 1) * 100);
+    return (
+      (Math.pow(1 + tasaNomAnual / 100 / numeroTotalCuotas, numeroTotalCuotas) -
+        1) *
+      100
+    );
   }
 
   tea = calcularTea(tasaNomAnual, numeroTotalCuotas);
 
   //Calculo de valor de la cuota de amortizacion
-  let pmt = montoFinanciar * (tasaIntEquiv / 100) / (1 - Math.pow(1 + (tasaIntEquiv / 100), -numeroTotalCuotas));
+  let pmt =
+    (montoFinanciar * (tasaIntEquiv / 100)) /
+    (1 - Math.pow(1 + tasaIntEquiv / 100, -numeroTotalCuotas));
 
   // Ciclo para calcular los pagos de todas las cuotas
   let saldoInicial = montoFinanciar;
-  let arrayAmortizacion = [] //array vacio a llenar por iteracion
-
-
+  let arrayAmortizacion = []; //array vacio a llenar por iteracion
 
   for (let i = 0; i < numeroTotalCuotas; i++) {
-    let intereses = saldoInicial * tasaIntEquiv / 100;
+    let intereses = (saldoInicial * tasaIntEquiv) / 100;
     let amortizacion = pmt - intereses;
     let saldoFinal = saldoInicial - amortizacion;
 
-    arrayAmortizacion[i] = [[i], saldoInicial.toFixed(2), amortizacion.toFixed(2), intereses.toFixed(2), saldoFinal.toFixed(2)]
+    arrayAmortizacion[i] = [
+      [i],
+      saldoInicial.toFixed(2),
+      amortizacion.toFixed(2),
+      intereses.toFixed(2),
+      saldoFinal.toFixed(2),
+    ];
 
     saldoInicial = saldoFinal;
   }
 
   for (let i = 0; i < numeroTotalCuotas; i++) {
-    let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
+    let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion"); //elemento del DOM de referencia
     let divNuevoAnidado = document.createElement("div");
     divNuevoAnidado.classList.add("tabla-amortizacion");
-    divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion")
-    let cuotasGeneradas = `<p>${i + 1}</p><p>${arrayAmortizacion[i][1]}</p><p>${arrayAmortizacion[i][2]}</p><p>${arrayAmortizacion[i][3]}</p><p>${arrayAmortizacion[i][4]}</p>`;
-    divNuevoAnidado.innerHTML = cuotasGeneradas
+    divNuevoAnidado.setAttribute("id", "columnas-tabla-amortizacion");
+    let cuotasGeneradas = `<p>${i + 1}</p><p>${arrayAmortizacion[i][1]}</p><p>${
+      arrayAmortizacion[i][2]
+    }</p><p>${arrayAmortizacion[i][3]}</p><p>${arrayAmortizacion[i][4]}</p>`;
+    divNuevoAnidado.innerHTML = cuotasGeneradas;
 
     divTablaAmort.append(divNuevoAnidado);
   }
@@ -586,7 +623,7 @@ function calcularCredito() {
 // Función para ocultar la ventanaSimula Credito
 function ocultarSimulaCredito(e) {
   e.preventDefault();
-  contenedorSimulaCredito.style.opacity = "0"
+  contenedorSimulaCredito.style.opacity = "0";
   contenedorSimulaCredito.style.pointerEvents = "none";
 }
 
@@ -594,12 +631,12 @@ function ocultarSimulaCredito(e) {
 function limpiarCampos(e) {
   e.preventDefault();
 
-  let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion") //elemento del DOM de referencia
+  let divTablaAmort = document.getElementById("cuerpo-tabla-amortizacion"); //elemento del DOM de referencia
   document.querySelector("#valor-auto").value = "";
   document.getElementById("monto-anticipo").value = "";
   document.getElementById("tasa-finac").value = "";
   document.getElementById("cant-agnos").value = "";
-  divTablaAmort.innerHTML = ""
+  divTablaAmort.innerHTML = "";
 }
 
 //************************************** Fin Seccion Simular Creditos********************* */
@@ -607,30 +644,28 @@ function limpiarCampos(e) {
 
 
 
-
-
-//*******************************  API y Fetch **************************************************** */
-
+//*******************************  API y Fetch  CAMBIO MONEDA **************************************************** */
 
 //Inicio Funcion cambiarMoneda
 async function cambiarMoneda(autosCambioMoneda) {
-
   const currencyFreak = "https://api.currencyfreaks.com/v2.0/rates/latest?apikey=926f1d71a5ce4af89da962e3cfacf424";
 
   const respuesta = await fetch(currencyFreak);
   const data = await respuesta.json();
 
-  const precioconvertidoARS = autosCambioMoneda.precio*data.rates["ARS"];
-  const precioconvertidoCLP = autosCambioMoneda.precio*data.rates["CLP"];
-  const precioconvertidoUYU = autosCambioMoneda.precio*data.rates["UYU"];
-  const precioconvertidoBRL = autosCambioMoneda.precio*data.rates["BRL"];
-  const precioconvertidoVEF = autosCambioMoneda.precio*data.rates["VEF"];
+  const precioconvertidoARS = autosCambioMoneda.precio * data.rates["ARS"];
+  const precioconvertidoCLP = autosCambioMoneda.precio * data.rates["CLP"];
+  const precioconvertidoUYU = autosCambioMoneda.precio * data.rates["UYU"];
+  const precioconvertidoBRL = autosCambioMoneda.precio * data.rates["BRL"];
+  const precioconvertidoVEF = autosCambioMoneda.precio * data.rates["VEF"];
   let monedas = document.querySelector(".currency");
 
   monedas.innerHTML = `
   <div class ="currency-contenedor">
     <div class="currency-tabla" id="currency-tabla">
-      <h1 class="titulo-currency">${autosCambioMoneda.marca}   ${autosCambioMoneda.modelo}  ${autosCambioMoneda.agno}</h1>
+      <h1 class="titulo-currency">${autosCambioMoneda.marca}   ${
+    autosCambioMoneda.modelo
+  }  ${autosCambioMoneda.agno}</h1>
       <table class="table">
         <thead class="currency-head">
           <tr>
@@ -647,35 +682,45 @@ async function cambiarMoneda(autosCambioMoneda) {
             <td>Argentina</td>
             <td>ARS</td>
             <td>${data.rates["ARS"]}</td>
-            <td>${Math.round(precioconvertidoARS).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+            <td>${Math.round(precioconvertidoARS).toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}</td>
           </tr>
           <tr>
             <th scope="row"><img class="ars" src="../multimedia/ch.svg" alt="" ></th>
             <td>Chile</td>
             <td>CLP</td>
             <td>${data.rates["CLP"]}</td>
-            <td>${Math.round(precioconvertidoCLP).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+            <td>${Math.round(precioconvertidoCLP).toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}</td>
           </tr>
           <tr>
             <th scope="row"><img class="ars" src="../multimedia/uy.svg" alt="" ></th>
             <td>Uruguay</td>
             <td>UYI</td>
             <td>${data.rates["UYU"]}</td>
-            <td>${Math.round(precioconvertidoUYU).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+            <td>${Math.round(precioconvertidoUYU).toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}</td>
           </tr>
           <tr>
             <th scope="row"><img class="ars" src="../multimedia/br.svg" alt="" ></th>
             <td>Brasil</td>
             <td>BRL</td>
             <td>${data.rates["BRL"]}</td>
-            <td>${Math.round(precioconvertidoBRL).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+            <td>${Math.round(precioconvertidoBRL).toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}</td>
           </tr>
           <tr>
             <th scope="row"><img class="ars" src="../multimedia/ve.svg" alt="" ></th>
             <td>Venezuela</td>
             <td>VEF</td>
             <td>${data.rates["VEF"]}</td>
-            <td>${Math.round(precioconvertidoVEF).toLocaleString('en-US', { minimumFractionDigits: 0 })}</td>
+            <td>${Math.round(precioconvertidoVEF).toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+            })}</td>
           </tr>
           </tbody>
       </table>
@@ -683,7 +728,7 @@ async function cambiarMoneda(autosCambioMoneda) {
 
     <div class="currency-imagen" id="currency-imagen">
       <img src="${autosCambioMoneda.urlFoto}" alt="${autosDetalles.modelo}">
-      <p> ultima actualizacion: ${data.date} </p>
+      <p> Ultima actualizacion: ${data.date} </p>
       <i class="fa-regular fa-rectangle-xmark cerrar-monedas" id ="cerrar-monedas"></i>        
     </div>
 
@@ -697,12 +742,10 @@ async function cambiarMoneda(autosCambioMoneda) {
   monedas.style.opacity = "1";
   monedas.style.pointerEvents = "unset";
 
-
   // Agregar de evento al botón de cierre
   botonCerrarMonedas = document.getElementById("cerrar-monedas");
-  console.log(botonCerrarMonedas);
-  botonCerrarMonedas.addEventListener('click', ocultarMonedas);
 
+  botonCerrarMonedas.addEventListener("click", ocultarMonedas);
 }
 
 // Función para ocultar la ventana modal
@@ -717,17 +760,42 @@ function ocultarMonedas(e) {
 
 
 
+//****************************************** DARK MODE ******************************************** */
+
+/*** EJEMPLO DE DARK MODE ***/
+
+const botonColorMode = document.querySelector("#color-mode");
+const main = document.getElementById("main");
+
+let modoOscuro = localStorage.getItem("modo-oscuro");
 
 
+function activarDarkMode() {
+    main.classList.add("modo-oscuro");
+    localStorage.setItem("modo-oscuro", "activado");
+    botonColorMode.innerHTML = "🌛 Cambiar Modo";
+}
 
 
+function desactivarDarkMode() {
+    main.classList.remove("modo-oscuro");
+    localStorage.setItem("modo-oscuro", "desactivado");
+    botonColorMode.innerHTML = "🌞 Cambiar Modo";
+}
 
 
+if (modoOscuro === "activado") {
+    activarDarkMode();
+} else {
+    desactivarDarkMode();
+}
 
+botonColorMode.addEventListener("click", () => {
+    modoOscuro = localStorage.getItem("modo-oscuro");
 
-
-
-
-
-
-
+    if (modoOscuro === "activado") {
+        desactivarDarkMode();
+    } else {
+        activarDarkMode();
+    }
+})
