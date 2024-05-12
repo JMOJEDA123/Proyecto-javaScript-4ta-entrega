@@ -276,7 +276,7 @@ function cargarAutos(autos) {
         <p class="nom-items"><span class="titulo-items">${auto.marca}   ${auto.modelo}  ${auto.agno}</span></p>
         <p class="condicion-items"><span class="titulo-items"> ${auto.condicion}</span></p>
         <div class= "money-converter">
-          <p class="precio-items"><span class="precio-item">AR$ ${auto.precio}</span></p>
+          <p class="precio-items"><span class="precio-item">USD $ ${auto.precio}</span></p>
           <p class="icono-cambio-moneda" id="${auto.id}">💱</p>
         </div>        
         <button class="boton-ver-detalles button" id="${auto.id}"> Ver Detalles </button>
